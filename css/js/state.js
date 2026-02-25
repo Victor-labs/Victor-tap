@@ -1,5 +1,5 @@
-var _$x=function(){var _a=0x1,_b=0x2;return _a+_b===0x3;};
-var KEY='\x76\x63\x67\x5f\x76\x39';
+/* STATE */
+var KEY='vcg_v9';
 var G={
   vk:0,dia:0,taps:0,mined:0,logins:0,bot:false,lastActive:null,planUsed:false,boosted:0,name:'',email:'',
   tap:[false,false,false,false,false,false,false,false,false,false],
@@ -19,7 +19,7 @@ function ld(){
   try{
     var raw=localStorage.getItem(KEY);if(!raw)return false;
     var p=JSON.parse(raw);
-
+    // merge safely
     G.vk=p.vk||0;G.dia=p.dia||0;G.taps=p.taps||0;G.mined=p.mined||0;
     G.logins=p.logins||0;G.bot=p.bot||false;G.lastActive=p.lastActive||null;
     G.planUsed=p.planUsed||false;G.boosted=p.boosted||0;
@@ -37,6 +37,7 @@ function ld(){
       if(p.en.bc)G.en.bc=p.en.bc;if(p.en.ce)G.en.ce=p.en.ce;
       if(p.en.xm)G.en.xm=p.en.xm;
     }
+    if(p.ex) G.ex=p.ex;
     return !!(G.name&&G.email);
   }catch(e){return false;}
 }
